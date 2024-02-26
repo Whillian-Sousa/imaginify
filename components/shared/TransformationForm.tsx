@@ -109,29 +109,29 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         } catch (error) {
           console.log(error)
         }
+      }
 
-        if (action === 'Update') {
-          try {
-            const updatedImage = await updateImage({
-              image: {
-                ...imageData,
-                _id: data._id
-              },
-              userId,
-              path: `/transformations/${data._id}`
-            })
+      if (action === 'Update') {
+        try {
+          const updatedImage = await updateImage({
+            image: {
+              ...imageData,
+              _id: data._id
+            },
+            userId,
+            path: `/transformations/${data._id}`
+          })
 
-            if (updatedImage) {
-              router.push(`/transformations/${updatedImage._id}`)
-            }
-
-          } catch (error) {
-            console.log(error)
+          if (updatedImage) {
+            router.push(`/transformations/${updatedImage._id}`)
           }
+
+        } catch (error) {
+          console.log(error)
         }
       }
-      setIsSubmitting(false)
     }
+    setIsSubmitting(false)
   }
 
   const onSelectFieldHandler = (value: string,
